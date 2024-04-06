@@ -63,5 +63,8 @@ vector_store = get_vector_store("custom", metadata_fields)
 from llama_index.core.ingestion import IngestionPipeline
 pipeline = IngestionPipeline(transformations=transformations, vector_store=vector_store)
 
-nodes = pipeline.run(documents=md_nodes[3:4])
-print(nodes)
+nodes = pipeline.run(documents=md_nodes)
+
+from index import get_index
+index = get_index(vector_store, llm, embed_model)
+index.insert_nodes(nodes)

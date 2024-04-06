@@ -1,7 +1,7 @@
 from llama_index.core.extractors import BaseExtractor
 
 def get_chapter_title(node_metadata: dict):
-    if node_metadata['Header_1']:
+    if 'Header_1' in node_metadata:
         ind = node_metadata['Header_1'].find("{")
         if ind > 0:
             return node_metadata['Header_1'][:ind]
